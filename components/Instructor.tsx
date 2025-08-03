@@ -51,11 +51,13 @@ export default function Instructor() {
 										mid level Software Engineer & MERN Stack Developer
 									</p>
 									<p className='text-gray-600 dark:text-gray-300 leading-relaxed'>
-										With over 10 years of experience in software development,
-										Eng. Abdelrahman Hossam has helped hundreds of companies
-										migrate from traditional SQL databases to MongoDB. He holds
-										multiple MongoDB certifications and has contributed to
-										several open-source database projects.
+										With over 3 years of experience in software development,
+										Abdelrahman Hossam is a skilled Front-End and Mobile
+										Developer who specializes in building responsive,
+										high-performance web and mobile applications using React.js,
+										Next.js, and Flutter. He has a proven track record of
+										enhancing user satisfaction and engagement by delivering
+										innovative, user-centric solutions.
 									</p>
 								</div>
 

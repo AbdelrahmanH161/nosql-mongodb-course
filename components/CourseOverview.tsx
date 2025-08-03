@@ -18,18 +18,18 @@ const courseData = {
 		title: 'Day 1: NoSQL Fundamentals & MongoDB Basics',
 		sessions: [
 			{
-				time: '9:00 AM - 10:30 AM',
+				time: '9:00 AM - 9:30 AM',
 				title: 'Introduction to NoSQL',
 				type: 'theory',
 				topics: [
-					'What is NoSQL and why use it?',
-					'NoSQL vs SQL databases',
-					'Types of NoSQL databases',
-					'CAP theorem and ACID properties',
+					'What is NoSQL and why it emerged',
+					'Comparison with traditional RDBMS',
+					'Real-world use cases and examples',
+					'SQL vs NoSQL document structure',
 				],
 			},
 			{
-				time: '10:30 AM - 11:00 AM',
+				time: '9:30 AM - 10:20 AM',
 				title: 'NoSQL Types & CAP Theorem',
 				type: 'theory',
 				topics: [
@@ -39,205 +39,28 @@ const courseData = {
 					'Graph databases (Neo4j, ArangoDB)',
 					'CAP Theorem explained',
 				],
-				detailedContent: {
-					nosqlTypes: {
-						title: 'The Four Types of NoSQL Databases',
-						description:
-							'NoSQL databases are categorized into four main types, each designed for specific use cases:',
-						types: [
-							{
-								name: 'Key-Value Stores',
-								icon: '🔑',
-								description:
-									'Simplest NoSQL database type that stores data as key-value pairs.',
-								examples: ['Redis', 'DynamoDB', 'Memcached'],
-								useCases: ['Caching', 'Session storage', 'Real-time analytics'],
-								code: `// Redis Example
-SET user:123 "John Doe"
-GET user:123
-// Returns: "John Doe"`,
-								pros: [
-									'Fastest performance',
-									'Simple to use',
-									'Highly scalable',
-								],
-								cons: [
-									'Limited query capabilities',
-									'No complex relationships',
-								],
-							},
-							{
-								name: 'Document Databases',
-								icon: '📄',
-								description:
-									'Store data in flexible, JSON-like documents with nested structures.',
-								examples: ['MongoDB', 'CouchDB', 'Firebase Firestore'],
-								useCases: [
-									'Content management',
-									'E-commerce catalogs',
-									'User profiles',
-								],
-								code: `// MongoDB Example
-{
-  "_id": ObjectId("..."),
-  "name": "John Doe",
-  "email": "john@example.com",
-  "address": {
-    "street": "123 Main St",
-    "city": "New York"
-  },
-  "hobbies": ["reading", "gaming"]
-}`,
-								pros: [
-									'Flexible schema',
-									'Rich queries',
-									'Natural data modeling',
-								],
-								cons: ['Complex transactions', 'Larger storage overhead'],
-							},
-							{
-								name: 'Column-Family Stores',
-								icon: '📊',
-								description:
-									'Store data in columns rather than rows, optimized for analytical queries.',
-								examples: ['Cassandra', 'HBase', 'ScyllaDB'],
-								useCases: [
-									'Time-series data',
-									'IoT applications',
-									'Big data analytics',
-								],
-								code: `// Cassandra Example
-CREATE TABLE sensor_data (
-  sensor_id text,
-  timestamp timestamp,
-  temperature float,
-  humidity float,
-  PRIMARY KEY (sensor_id, timestamp)
-);`,
-								pros: [
-									'Excellent for analytics',
-									'Highly scalable',
-									'Fast writes',
-								],
-								cons: ['Complex setup', 'Limited ACID support'],
-							},
-							{
-								name: 'Graph Databases',
-								icon: '🕸️',
-								description:
-									'Store data as nodes and relationships, perfect for complex connections.',
-								examples: ['Neo4j', 'ArangoDB', 'Amazon Neptune'],
-								useCases: [
-									'Social networks',
-									'Recommendation engines',
-									'Fraud detection',
-								],
-								code: `// Neo4j Example
-CREATE (john:Person {name: "John"})
-CREATE (jane:Person {name: "Jane"})
-CREATE (john)-[:FRIENDS_WITH]->(jane)
-MATCH (a:Person)-[:FRIENDS_WITH]->(b:Person)
-RETURN a.name, b.name`,
-								pros: [
-									'Excellent for relationships',
-									'Complex queries',
-									'Natural for networks',
-								],
-								cons: ['Slower for simple queries', 'Higher complexity'],
-							},
-						],
-					},
-					capTheorem: {
-						title: 'CAP Theorem Explained',
-						description:
-							'The CAP theorem is a fundamental concept in distributed systems that states a distributed database can only guarantee two out of three properties:',
-						overview:
-							'🟢 Think of it as a triangle where you can only choose two corners.',
-						properties: [
-							{
-								name: 'Consistency (C)',
-								icon: '🔄',
-								description: 'All nodes see the same data at the same time',
-								detailed:
-									'When you write data to one node, all other nodes immediately see the updated data. Like having synchronized clocks across all servers.',
-								example:
-									'Banking systems where account balance must be consistent across all branches.',
-							},
-							{
-								name: 'Availability (A)',
-								icon: '⚡',
-								description: 'Every request receives a response',
-								detailed:
-									'The system continues to operate and respond to requests even when some nodes are down or unreachable.',
-								example:
-									'Social media platforms that continue working even if some servers fail.',
-							},
-							{
-								name: 'Partition Tolerance (P)',
-								icon: '🌐',
-								description:
-									'System continues to operate despite network failures',
-								detailed:
-									'The system can handle network partitions (communication failures between nodes) and continue functioning.',
-								example:
-									'Global applications that work even when internet connections between data centers are interrupted.',
-							},
-						],
-						combinations: [
-							{
-								name: 'CP (Consistency + Partition Tolerance)',
-								description:
-									'Sacrifices availability for consistency and partition tolerance',
-								example:
-									'Traditional relational databases in distributed setups',
-							},
-							{
-								name: 'AP (Availability + Partition Tolerance)',
-								description:
-									'Sacrifices consistency for availability and partition tolerance',
-								example: 'MongoDB, Cassandra, DynamoDB',
-							},
-							{
-								name: 'CA (Consistency + Availability)',
-								description:
-									'Sacrifices partition tolerance for consistency and availability',
-								example: 'Single-node databases, traditional RDBMS',
-							},
-						],
-					},
-				},
 			},
 			{
-				time: '11:00 AM - 11:30 AM',
-				title: 'MongoDB Installation & Setup',
-				type: 'hands-on',
-				topics: [
-					'Installing MongoDB Community Server',
-					'MongoDB Compass setup',
-					'Basic MongoDB shell commands',
-					'Understanding MongoDB architecture',
-				],
-			},
-			{
-				time: '11:15 AM - 11:45 AM',
-				title: 'Documents & Collections',
+				time: '10:20 AM - 10:40 AM',
+				title: 'NoSQL Architecture (Sharding & Replica Sets)',
 				type: 'theory',
 				topics: [
-					'BSON vs JSON',
-					'Document structure and validation',
-					'Collection design patterns',
-					'Data modeling best practices',
+					'Horizontal scaling with sharding',
+					'High availability with replica sets',
+					'MongoDB cluster architecture',
+					'Data distribution strategies',
 				],
 			},
 			{
-				time: '11:45 AM - 12:30 PM',
-				title: 'Basic CRUD Operations',
+				time: '10:40 AM - 11:50 AM',
+				title: 'MongoDB Basics & First Hands-on',
 				type: 'hands-on',
 				topics: [
-					'Insert operations (insertOne, insertMany)',
-					'Find operations and query selectors',
-					'Update operations (updateOne, updateMany)',
-					'Delete operations and bulk writes',
+					'Installing MongoDB and Mongo Shell',
+					'MongoDB document structure',
+					'Database → Collection → Document hierarchy',
+					'Basic CRUD operations',
+					'Query operators and filters',
 				],
 			},
 		],
@@ -437,183 +260,6 @@ export default function CourseOverview() {
 															</motion.li>
 														))}
 													</ul>
-
-													{/* Detailed Content for Session 2 */}
-													{session.detailedContent && (
-														<div className='space-y-6'>
-															{/* NoSQL Types */}
-															{session.detailedContent.nosqlTypes && (
-																<div className='bg-white dark:bg-gray-600 rounded-lg p-4'>
-																	<h6 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-																		{session.detailedContent.nosqlTypes.title}
-																	</h6>
-																	<p className='text-gray-600 dark:text-gray-300 mb-4'>
-																		{
-																			session.detailedContent.nosqlTypes
-																				.description
-																		}
-																	</p>
-
-																	<div className='grid md:grid-cols-2 gap-4'>
-																		{session.detailedContent.nosqlTypes.types.map(
-																			(type, typeIndex) => (
-																				<div
-																					key={typeIndex}
-																					className='border border-gray-200 dark:border-gray-500 rounded-lg p-3'>
-																					<div className='flex items-center gap-2 mb-2'>
-																						<span className='text-xl'>
-																							{type.icon}
-																						</span>
-																						<h6 className='text-[#13AA52] font-semibold text-sm'>
-																							{type.name}
-																						</h6>
-																					</div>
-																					<p className='text-gray-600 dark:text-gray-300 text-xs mb-2'>
-																						{type.description}
-																					</p>
-
-																					<div className='mb-2'>
-																						<h6 className='text-blue-600 dark:text-blue-400 font-semibold text-xs mb-1'>
-																							Examples:
-																						</h6>
-																						<p className='text-gray-600 dark:text-gray-300 text-xs'>
-																							{type.examples.join(', ')}
-																						</p>
-																					</div>
-
-																					<div className='mb-2'>
-																						<h6 className='text-blue-600 dark:text-blue-400 font-semibold text-xs mb-1'>
-																							Use Cases:
-																						</h6>
-																						<p className='text-gray-600 dark:text-gray-300 text-xs'>
-																							{type.useCases.join(', ')}
-																						</p>
-																					</div>
-
-																					<SyntaxHighlighter
-																						language='javascript'
-																						style={tomorrow}
-																						customStyle={{
-																							background: 'transparent',
-																							fontSize: '10px',
-																							borderRadius: '4px',
-																							margin: '8px 0',
-																						}}>
-																						{type.code}
-																					</SyntaxHighlighter>
-
-																					<div className='grid grid-cols-2 gap-2'>
-																						<div>
-																							<h6 className='text-green-600 dark:text-green-400 font-semibold text-xs mb-1'>
-																								Pros:
-																							</h6>
-																							<ul className='text-gray-600 dark:text-gray-300 text-xs space-y-1'>
-																								{type.pros.map(
-																									(pro, proIndex) => (
-																										<li key={proIndex}>
-																											• {pro}
-																										</li>
-																									)
-																								)}
-																							</ul>
-																						</div>
-																						<div>
-																							<h6 className='text-red-600 dark:text-red-400 font-semibold text-xs mb-1'>
-																								Cons:
-																							</h6>
-																							<ul className='text-gray-600 dark:text-gray-300 text-xs space-y-1'>
-																								{type.cons.map(
-																									(con, conIndex) => (
-																										<li key={conIndex}>
-																											• {con}
-																										</li>
-																									)
-																								)}
-																							</ul>
-																						</div>
-																					</div>
-																				</div>
-																			)
-																		)}
-																	</div>
-																</div>
-															)}
-
-															{/* CAP Theorem */}
-															{session.detailedContent.capTheorem && (
-																<div className='bg-white dark:bg-gray-600 rounded-lg p-4'>
-																	<h6 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-																		{session.detailedContent.capTheorem.title}
-																	</h6>
-																	<p className='text-gray-600 dark:text-gray-300 mb-2'>
-																		{
-																			session.detailedContent.capTheorem
-																				.description
-																		}
-																	</p>
-																	<p className='text-gray-600 dark:text-gray-300 mb-4 italic'>
-																		{
-																			session.detailedContent.capTheorem
-																				.overview
-																		}
-																	</p>
-
-																	<div className='grid md:grid-cols-3 gap-3 mb-4'>
-																		{session.detailedContent.capTheorem.properties.map(
-																			(prop, propIndex) => (
-																				<div
-																					key={propIndex}
-																					className='border border-gray-200 dark:border-gray-500 rounded p-3'>
-																					<div className='flex items-center gap-2 mb-2'>
-																						<span className='text-lg'>
-																							{prop.icon}
-																						</span>
-																						<h6 className='text-[#13AA52] font-semibold text-sm'>
-																							{prop.name}
-																						</h6>
-																					</div>
-																					<p className='text-gray-600 dark:text-gray-300 text-xs mb-1'>
-																						{prop.description}
-																					</p>
-																					<p className='text-gray-600 dark:text-gray-300 text-xs mb-2'>
-																						{prop.detailed}
-																					</p>
-																					<p className='text-blue-600 dark:text-blue-400 text-xs italic'>
-																						Example: {prop.example}
-																					</p>
-																				</div>
-																			)
-																		)}
-																	</div>
-
-																	<div className='bg-gray-50 dark:bg-gray-500 rounded p-3'>
-																		<h6 className='text-blue-600 dark:text-blue-400 font-semibold text-sm mb-2'>
-																			CAP Combinations:
-																		</h6>
-																		<div className='grid md:grid-cols-3 gap-2'>
-																			{session.detailedContent.capTheorem.combinations.map(
-																				(combo, comboIndex) => (
-																					<div
-																						key={comboIndex}
-																						className='border border-gray-200 dark:border-gray-400 rounded p-2'>
-																						<h6 className='text-[#13AA52] font-semibold text-xs mb-1'>
-																							{combo.name}
-																						</h6>
-																						<p className='text-gray-600 dark:text-gray-300 text-xs mb-1'>
-																							{combo.description}
-																						</p>
-																						<p className='text-blue-600 dark:text-blue-400 text-xs'>
-																							Example: {combo.example}
-																						</p>
-																					</div>
-																				)
-																			)}
-																		</div>
-																	</div>
-																</div>
-															)}
-														</div>
-													)}
 												</div>
 											</motion.div>
 										)}
